@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/GameAWeek/MIKIRI/Scenes/Title.unity
+    guid: 463946e7d63bb1b41a90fe1903d17f8c
+  - enabled: 1
+    path: Assets/GameAWeek/MIKIRI/Scenes/Game.unity
+    guid: a5899e2593a58f74e9fe03036834fe68
+  - enabled: 1
+    path: Assets/GameAWeek/MIKIRI/Scenes/Result.unity
+    guid: ac9c66c7f20a4da40b08a6a8c6a650b8
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
