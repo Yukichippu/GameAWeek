@@ -9,8 +9,8 @@ public class GameManager_MIKIRI : MonoBehaviour
     private Text evaText;    //•]‰¿
     private TextMeshProUGUI frameText;  //ƒtƒŒ[ƒ€ 
 
-    [SerializeField]
-    private float delay     = 20.0f;    //
+    public float delay     = 20.0f;    //
+
     [SerializeField]
     private float frame;                //Œo‰ßŠÔ‚ğŠi”[‚·‚é•Ï”
     private bool stop;                  //~‚ß‚½‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒO
@@ -66,7 +66,6 @@ public class GameManager_MIKIRI : MonoBehaviour
             return;
         }
 
-        //‰¼
         if (!stop)
             frame += Time.deltaTime;
 
@@ -137,9 +136,4 @@ public class GameManager_MIKIRI : MonoBehaviour
 
         return false;
     }
-
-    private bool NextStage()
-    {
-        return false;
-    }   
 }

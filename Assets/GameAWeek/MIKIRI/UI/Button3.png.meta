@@ -1,10 +1,28 @@
 fileFormatVersion: 2
-guid: 34783a8fd9c490a49946467400565703
+guid: 0fa1b2ff90d550e4680c472d98bc9516
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5334370612115171182
-    second: Wilderness_0
+      213: 5540965763901271620
+    second: 15t41_0
+  - first:
+      213: 6513506666939761254
+    second: 15t41_1
+  - first:
+      213: -9034056156746008802
+    second: 15t41_2
+  - first:
+      213: 7158374481897078095
+    second: 15t41_3
+  - first:
+      213: -7593448972643602252
+    second: 15t41_4
+  - first:
+      213: -5226279372308639057
+    second: 15t41_5
+  - first:
+      213: -2703251602670638091
+    second: 15t41_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,53 +114,27 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Wilderness_0
+      name: 15t41_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 4093
-        height: 2894
+        x: 16
+        y: 13
+        width: 158
+        height: 29
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2989794e03288f5b0800000000000000
-      internalID: -5334370612115171182
+      spriteID: 44eafe5410775ec40800000000000000
+      internalID: 5540965763901271620
       vertices: []
       indices: 
       edges: []
@@ -151,7 +143,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2e91c4ff0ceee2948bbd4abcf7db57cf
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +153,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Wilderness_0: -5334370612115171182
+      15t41_0: 5540965763901271620
+      15t41_1: 6513506666939761254
+      15t41_2: -9034056156746008802
+      15t41_3: 7158374481897078095
+      15t41_4: -7593448972643602252
+      15t41_5: -5226279372308639057
+      15t41_6: -2703251602670638091
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

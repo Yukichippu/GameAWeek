@@ -7,6 +7,10 @@ public class ChangeScene_MIKIRI : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
     }
+    public void ChangeScene_Game_Next()
+    {
+        SceneManager.LoadScene("Game");
+    }
     public void ChangeScene_Result()
     {
         SceneManager.LoadScene("Result");
