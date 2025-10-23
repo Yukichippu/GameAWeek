@@ -7,9 +7,13 @@ public class ChangeScene_MIKIRI : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
     }
-    public void ChangeScene_Game_Next()
+    public void NextStage()
     {
-        SceneManager.LoadScene("Game");
+        Canvas selectUICanvas = GameObject.Find("SelectUICanvas").GetComponent<Canvas>();
+        Canvas mainCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+
+        selectUICanvas.enabled = false;
+        mainCanvas.enabled = true;
     }
     public void ChangeScene_Result()
     {
