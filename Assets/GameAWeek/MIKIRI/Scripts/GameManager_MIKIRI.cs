@@ -47,6 +47,8 @@ public class GameManager_MIKIRI : MonoBehaviour
         playing = false;
         select = true;
 
+        PlayerPrefs.DeleteKey("stageNumber");
+
         stageNumText.text = ("Stage:") + stageNum.ToString();
         randNum = Random.Range(randMin, randMax);
     }
@@ -150,10 +152,13 @@ public class GameManager_MIKIRI : MonoBehaviour
                 //
                 timeEnd = 0;
 
+                PlayerPrefs.SetInt("stageNum", stageNum);
+
                 //ゲーム開始時の状態に戻す
                 stop = false;
                 playing = false;
                 randNum = Random.Range(randMin, randMax);
+
             }
         }
         //ゲームオーバー
