@@ -3,21 +3,21 @@ using UnityEngine;
 
 public class Tumbleweed_MIKIRI : MonoBehaviour
 {
-    private new Camera camera;
+    private new Camera camera;                  //MainCamera
 
-    private Vector3     myPos;
-    private Quaternion  myRot;
-    private Vector3     startPos;
-    private Vector3     leftEdgePixel;
-    private Vector3     leftEdgeWorld;
+    private Vector3     myPos;                  //Position
+    private Quaternion  myRot;                  //Rotation
+    private Vector3     startPos;               //開始地点
+    private Vector3     leftEdgePixel;          //画面左端のピクセル座標
+    private Vector3     leftEdgeWorld;          //画面の左端のワールド座標
 
-    private float delay;
-    private float radomMin = 1.0f;
-    private float radomMax = 5.0f;
-    private float timer;
-    private float speed = 2.0f;
+    private float       delay;                  //次に動くまでの時間
+    private float       radomMin = 1.0f;        //delayの最小値
+    private float       radomMax = 5.0f;        //delayの最大値
+    private float       timer;                  //タイマー
+    private float       speed = 2.0f;           //移動速度
 
-    private bool moving;
+    private bool        moving;                 //動いているがどうか
 
     private void Start()
     {

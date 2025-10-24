@@ -3,15 +3,16 @@ using UnityEngine.UI;
 
 public class Result_MIKIRI : MonoBehaviour
 {
-    private Text explanationText;
-    private Text stageText;
+    private Text stageText; //突破したステージ数を表示するText
 
     private void Start()
     {
+        //GameManager_MIKIRIのstageNumを代入
         int stageNumR = PlayerPrefs.GetInt("stageNum", 0);
-        explanationText = GameObject.Find("ExplanationText").GetComponent<Text>();
+
         stageText = GameObject.Find("StageText").GetComponent<Text>();
 
+        //表示
         stageText.text = ("Stage") + stageNumR.ToString();
     }
 }

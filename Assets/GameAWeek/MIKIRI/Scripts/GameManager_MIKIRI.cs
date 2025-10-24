@@ -5,24 +5,28 @@ using UnityEngine.UI;
 
 public class GameManager_MIKIRI : MonoBehaviour
 {
-    private Canvas mainCanvas;
-    private Canvas selectUICanvas;
+    private Canvas          mainCanvas;     //ゲーム画面のCanvas
+    private Canvas          selectUICanvas; //ステージクリア後の選択画面のCanvas
+    private AudioSource     myAudioSouce;   //AudioSouce
 
-    private Image exclamationMark;          //ビックリマークの画像
-    private Text evaText;                   //評価
+    private Image           exclamationMark;//ビックリマークの画像
+    private Text            evaText;        //評価
     private TextMeshProUGUI frameText;      //フレーム 
-    private TextMeshProUGUI stageNumText;   //ステージ数 
+    private TextMeshProUGUI stageNumText;   //ステージ数
+    [SerializeField]
+    private AudioClip       se;             //SE
 
-    public float delay     = 50.0f;         //
+    public float delay     = 50.0f;         //クリアになるframeの範囲
 
     [SerializeField]
     private float frame;                    //経過時間を格納する変数
     private bool  stop;                     //止めたかどうかのフラグ
-    private bool  playing;                  //
-    private bool select;
-    private float timeStart = 0.0f;         //       
-    private float timePlay  = 0.0f;         //
-    private float timeEnd   = 0.0f;         //
+    private bool  playing;                  //ゲーム中か
+    private bool  select;                   //ステージクリア後の選択画面かどうか
+    private bool  oneShot;                  //SEを一度だけ流すための変数
+    private float timeStart = 0.0f;         //IsStartのタイマー       
+    private float timePlay  = 0.0f;         //IsPlayのタイマー
+    private float timeEnd   = 0.0f;         //IsEndのタイマー
     private float waitTime  = 3.0f;         //開始までの待ち時間
     private float randNum;                  //ランダムで決まる制限時間
     private float randMin   = 1.0f;         //randNumの最小値
@@ -33,6 +37,7 @@ public class GameManager_MIKIRI : MonoBehaviour
     {
         mainCanvas      = GameObject.Find("Canvas").GetComponent<Canvas>();
         selectUICanvas  = GameObject.Find("SelectUICanvas").GetComponent<Canvas>();
+        myAudioSouce    = GetComponent<AudioSource>();
 
         exclamationMark = GameObject.Find("exclamation").GetComponent<Image>();
         evaText         = GameObject.Find("EvaluationText").GetComponent<Text>();
@@ -107,6 +112,13 @@ public class GameManager_MIKIRI : MonoBehaviour
             //評価とframeのテキストを更新
             frameText.text = frame.ToString();
             evaText.text = ("お見事！");
+
+            if (!oneShot)
+            {
+                myAudioSouce.PlayOneShot(se);
+                oneShot = true;
+            }
+            
             Debug.Log("---CLEAR---,FLAME: " + frame);
 
             //次のステージへ
@@ -123,13 +135,10 @@ public class GameManager_MIKIRI : MonoBehaviour
                     if (Input.GetKey(KeyCode.Alpha1))
                     {
                         SceneManager.LoadScene("Game");
-                        select = false;
                     }
                     //難易度を上げてスタート
                     if (Input.GetKey(KeyCode.Alpha2))
                     {
-                        mainCanvas.enabled = true;
-                        selectUICanvas.enabled = false;
                         select = false;
                     }
                     //タイトルへ
@@ -140,6 +149,10 @@ public class GameManager_MIKIRI : MonoBehaviour
                     return;
                 }
 
+                //難易度を上げた場合この下を通る
+                mainCanvas.enabled = true;
+                selectUICanvas.enabled = false;
+
                 //ステージ数更新
                 stageNum++;
 
@@ -149,7 +162,7 @@ public class GameManager_MIKIRI : MonoBehaviour
                 //難易度上昇
                 delay -= 5.0f;
 
-                //
+                //初期化
                 timeEnd = 0;
 
                 PlayerPrefs.SetInt("stageNum", stageNum);
@@ -157,6 +170,10 @@ public class GameManager_MIKIRI : MonoBehaviour
                 //ゲーム開始時の状態に戻す
                 stop = false;
                 playing = false;
+                oneShot = false;
+                frame = 0;
+                evaText.text = ("");
+                frameText.text = ("");
                 randNum = Random.Range(randMin, randMax);
 
             }
@@ -176,6 +193,10 @@ public class GameManager_MIKIRI : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// 開始まで3秒待つ
+    /// </summary>
+    /// <returns></returns>
     private bool IsStart()
     {
         if (!playing)
@@ -197,6 +218,10 @@ public class GameManager_MIKIRI : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// ビックリマークを出すまでの時間をランダムで待つ
+    /// </summary>
+    /// <returns></returns>
     private bool IsPlay()
     {
         if (!playing)
@@ -218,6 +243,10 @@ public class GameManager_MIKIRI : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// 終了まで3秒待つ
+    /// </summary>
+    /// <returns></returns>
     private bool IsEnd()
     {
         //3秒待つ
