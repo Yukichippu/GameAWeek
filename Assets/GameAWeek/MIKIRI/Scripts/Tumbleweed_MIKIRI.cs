@@ -1,4 +1,3 @@
-using System.Timers;
 using UnityEngine;
 
 public class Tumbleweed_MIKIRI : MonoBehaviour

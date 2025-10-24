@@ -63,16 +63,13 @@ public class GameManager_MIKIRI : MonoBehaviour
         //待機
         if (!IsStart())
         {            
-            Debug.Log("Wait Time...");
             return;
         }
-            Debug.Log("----------------Start!----------------");
         //開始
         if (IsPlay())
         {
             exclamationMark.enabled = true;
             playing = true;
-            Debug.Log("-----------------Play!----------------");
         }
         else
         {
@@ -118,8 +115,6 @@ public class GameManager_MIKIRI : MonoBehaviour
                 myAudioSouce.PlayOneShot(se);
                 oneShot = true;
             }
-            
-            Debug.Log("---CLEAR---,FLAME: " + frame);
 
             //次のステージへ
             if(IsEnd())
@@ -183,7 +178,6 @@ public class GameManager_MIKIRI : MonoBehaviour
         {
             frameText.text = frame.ToString();
             evaText.text = ("残念...");
-            Debug.Log("---DEFEAT---,FLAME: " + frame);
 
             //リザルトに移動
             if (IsEnd())
