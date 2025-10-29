@@ -2,15 +2,27 @@ using UnityEngine;
 
 public class GameManager_RHYTHM : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Animator myAnimator;
+    private GameObject pObj;
+    private CircleCollider2D target;
+
+    private void Start()
     {
-        
+        pObj = GameObject.Find("Wizard").gameObject;
+        myAnimator = pObj.GetComponent<Animator>();
+        target = GameObject.Find("Target").GetComponent<CircleCollider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetKey(KeyCode.Space))
+        {
+            myAnimator.SetTrigger("attack");
+            target.enabled = true;
+        }
+        else
+        {
+            target.enabled = false;
+        }
     }
 }

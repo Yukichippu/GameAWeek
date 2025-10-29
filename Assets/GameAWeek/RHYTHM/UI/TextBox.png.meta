@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: da58a240dd89b4b418f9d875ff76a171
+guid: 7dbdd74719a52114fa879a8f47b68b84
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1330039737504432551
-    second: MasicCircle_0
+      213: 3800782402952206127
+    second: TextBox_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MasicCircle_0
+      name: TextBox_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 3508
-        height: 2480
+        x: 883
+        y: 368
+        width: 4901
+        height: 4430
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7a10b1b2810457210800000000000000
-      internalID: 1330039737504432551
+      spriteID: f27958445771fb430800000000000000
+      internalID: 3800782402952206127
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      MasicCircle_0: 1330039737504432551
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
