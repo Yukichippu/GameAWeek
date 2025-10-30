@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MasicCircle-move--unscreen_0: 3635428273582482408
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
