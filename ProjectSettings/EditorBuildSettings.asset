@@ -4,16 +4,7 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/GameAWeek/RHYTHM/Scenes/Title.unity
-    guid: 53b700a59d906b343978ca7b425c1644
-  - enabled: 1
-    path: Assets/GameAWeek/RHYTHM/Scenes/Game.unity
-    guid: af7b116d7b46a3f4aa9ffa7d398451b2
-  - enabled: 1
-    path: Assets/GameAWeek/RHYTHM/Scenes/Result.unity
-    guid: 423b883dfc7acdf48b9b2b9c9e1ee4aa
+  m_Scenes: []
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
