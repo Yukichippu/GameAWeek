@@ -3,28 +3,30 @@ using UnityEngine.SceneManagement;
 
 public class GameManager_RHYTHM : MonoBehaviour
 {
-    public int HP = 3;
+    public int                  HP = 3;                 //PlayerのHP
 
-    private Timer timer;
-    private Animator myAnimator;
-    private GameObject pObj;
-    private CircleCollider2D target;
+    private Timer               timer;                  //Timer.cs
+    private Animator            myAnimator;             //PlayerのAnimator
+    private GameObject          pObj;                   //Playerのオブジェクト
+    private CircleCollider2D    target;                 //攻撃を出す場所のcollider
 
-    private float timeEnd = 0.0f;
-    private float waitTime = 3.0f;
-
+    private float               timeEnd = 0.0f;         //IsEnd()のためのtime
+    private float               waitTime = 3.0f;        //IsEnd()のための待機時間
+        
     private void Start()
     {
-        timer = GameObject.Find("Timer").GetComponent<Timer>();
-        pObj = GameObject.Find("Wizard").gameObject;
-        myAnimator = pObj.GetComponent<Animator>();
-        target = GameObject.Find("Target").GetComponent<CircleCollider2D>();
+        timer       = GameObject.Find("Timer").GetComponent<Timer>();
+        pObj        = GameObject.Find("Wizard").gameObject;
+        myAnimator  = pObj.GetComponent<Animator>();
+        target      = GameObject.Find("Target").GetComponent<CircleCollider2D>();
 
+        //初期化(削除)
         PlayerPrefs.DeleteKey("Time");
     }
 
     private void Update()
     {
+        //攻撃
         if (Input.GetKey(KeyCode.Space))
         {
             myAnimator.SetTrigger("attack");
@@ -40,6 +42,7 @@ public class GameManager_RHYTHM : MonoBehaviour
             myAnimator.SetTrigger("die");
             if (IsEnd())
             {
+                //timerを保管
                 PlayerPrefs.SetInt("Time", (int)timer.timer);
                 SceneManager.LoadScene("Result");
             }
@@ -58,6 +61,9 @@ public class GameManager_RHYTHM : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// ダメージを受け時に呼ぶ
+    /// </summary>
     public void Damaged()
     {
         HP--;

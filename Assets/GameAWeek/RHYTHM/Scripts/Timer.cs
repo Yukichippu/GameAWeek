@@ -1,14 +1,10 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    // タイマーの時間を保存する変数
-    public float timer = 0f;
-
-    // 経過した時間を表示するUIテキスト（オプション）
-    private TextMeshProUGUI timerText;
+    public float timer = 0f;                //タイマーの時間を保存する変数
+    private TextMeshProUGUI timerText;      //経過した時間を表示するUIテキスト
 
     private void Start()
     {
