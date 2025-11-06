@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f9670bac30298dc4ebb1ca3986ea9a89
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 311262
+  packageName: Sephiroth Scene Switching Effects
+  packageVersion: 1.00.0
+  assetPath: Assets/SephirothSceneSwitchingEffects/Fade/UseScene/SephirothFadeSceneSwitchingScene.unity
+  uploadId: 734490

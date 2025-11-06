@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 32087e0a710a7114a8ade735581dd7fd
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 311262
+  packageName: Sephiroth Scene Switching Effects
+  packageVersion: 1.00.0
+  assetPath: Assets/SephirothSceneSwitchingEffects/Fade/Shader/SephirothFadeSceneSwitching.shader
+  uploadId: 734490

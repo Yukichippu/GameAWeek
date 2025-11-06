@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9c0276ae68b3f134aa8d1ae34164c079
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 311262
+  packageName: Sephiroth Scene Switching Effects
+  packageVersion: 1.00.0
+  assetPath: Assets/SephirothSceneSwitchingEffects/Fade/Shader/SephirothWipeImage.materSephirothFadeSceneSwitchingMaterial.mat
+  uploadId: 734490

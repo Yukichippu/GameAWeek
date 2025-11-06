@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2192c9cf14f26844687d663bcb721f65
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 311262
+  packageName: Sephiroth Scene Switching Effects
+  packageVersion: 1.00.0
+  assetPath: Assets/SephirothSceneSwitchingEffects/GrayScale/Shader/SephirothGrayScaleFadeSceneSwitching.mat
+  uploadId: 734490

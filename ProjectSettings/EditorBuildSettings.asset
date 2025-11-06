@@ -4,7 +4,19 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/GameAWeek/LABYRINTH/Scenes/Title.unity
+    guid: d1cda9ee7a73b1d47a5f52d45be71c87
+  - enabled: 1
+    path: Assets/GameAWeek/ImportFiles/SephirothSceneSwitchingEffects/Fade/DemoScene/SephirothFadeSceneSwitchingDemoScene1.unity
+    guid: a9cb46f7d78b592488929b2856446d1b
+  - enabled: 1
+    path: Assets/GameAWeek/LABYRINTH/Scenes/Game.unity
+    guid: 7785b2eca1b52af46be57d7e0ed80ab2
+  - enabled: 1
+    path: Assets/GameAWeek/LABYRINTH/Scenes/Result.unity
+    guid: 41aa15b873e478a45b09976516c9b1e2
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

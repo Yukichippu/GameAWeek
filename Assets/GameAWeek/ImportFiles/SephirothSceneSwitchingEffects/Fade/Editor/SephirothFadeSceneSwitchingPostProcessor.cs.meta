@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 4eb48d153510b2542bb2c6b21ff4146f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 311262
+  packageName: Sephiroth Scene Switching Effects
+  packageVersion: 1.00.0
+  assetPath: Assets/SephirothSceneSwitchingEffects/Fade/Editor/SephirothFadeSceneSwitchingPostProcessor.cs
+  uploadId: 734490

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e9d8928ce0f4c9f4e90163f594b40fed
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 311262
+  packageName: Sephiroth Scene Switching Effects
+  packageVersion: 1.00.0
+  assetPath: Assets/SephirothSceneSwitchingEffects/CircleWipe/Shader/SephirothWipeSceneSwitchingMaterial.mat
+  uploadId: 734490

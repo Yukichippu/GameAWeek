@@ -1,0 +1,1 @@
+Put all the demo scenes into BuildSettings and run it.

@@ -6,8 +6,9 @@ public class CSVReader_LABYRINTH : MonoBehaviour
     [SerializeField]
     private string CSVFilePath;
 
-    public GameObject blockPrefab;        // 0 の時に生成
-    public GameObject playerPrefab;       // 1 の時に生成
+    public GameObject blockPrefab;          //0 の時に生成
+    public GameObject playerPrefab;         //1 の時に生成
+    public GameObject goalPrefab;           //2 の時に生成
 
     private void Start()
     {
@@ -40,8 +41,8 @@ public class CSVReader_LABYRINTH : MonoBehaviour
                 if (!int.TryParse(values[x], out id))
                     continue;
 
+                // y をマイナスにして上から下へ並ぶようにする
                 Vector3 pos = new Vector3(x, -y, 0);
-                // y をマイナスにして上から下へ並ぶようにする（2D向け）
 
                 switch (id)
                 {
@@ -51,6 +52,10 @@ public class CSVReader_LABYRINTH : MonoBehaviour
 
                     case 1: // プレイヤー
                         Instantiate(playerPrefab, pos, Quaternion.identity);
+                        break;
+
+                    case 2: // ゴール
+                        Instantiate(goalPrefab, pos, Quaternion.identity);
                         break;
                 }
             }

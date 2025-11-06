@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 24c0fb5c44772f843a15e0866ebcd8fe
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 311262
+  packageName: Sephiroth Scene Switching Effects
+  packageVersion: 1.00.0
+  assetPath: Assets/SephirothSceneSwitchingEffects/CircleWipe/UseScene/SephirothWipeSceneSwitchingScene.unity
+  uploadId: 734490
