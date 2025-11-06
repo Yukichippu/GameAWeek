@@ -2,16 +2,12 @@ using UnityEngine;
 
 public class PlayerController_LABYRINTH : MonoBehaviour
 {
-    public GameObject field;    //
-
-    private Camera cam;         //
-    private Rigidbody2D rb;     //
+    private Camera      cam;    //MainCamera
+    private Rigidbody2D rb;     //PlayerのRigidbody2D
 
     [SerializeField]
-    private Vector2 gravityScale = new Vector2(0, -10.0f);      //
-    private Vector3 gravityDir;                                 //
-    private Vector3 camForward;                                 //
-    private Vector3 camRight;                                   //
+    private float   gravityScale = 10.0f;                       //重力の値(整数)
+    private Vector3 gravityDir;                                 //重力の向き
     private float   cameraDis = -10.0f;                         //カメラの距離
 
     private void Start()
@@ -22,6 +18,9 @@ public class PlayerController_LABYRINTH : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //現在のカメラの下向きのベクトルを取得
+        gravityDir = -cam.transform.up;
+
         //重力
         rb.AddForce(gravityDir*gravityScale);
     }
@@ -30,12 +29,6 @@ public class PlayerController_LABYRINTH : MonoBehaviour
     {
         //プレイヤーに追従
         cam.transform.position = new Vector3(transform.position.x, transform.position.y, cameraDis);
-
-        camForward = cam.transform.forward;
-        camRight = cam.transform.right;
-
-        //現在のカメラの下向きのベクトルを取得
-        gravityDir = -Vector3.Cross(camRight, camForward).normalized;
 
         //カメラ回転
         if (Input.GetKey(KeyCode.A))
