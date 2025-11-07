@@ -10,7 +10,7 @@ public class PlayerController_LABYRINTH : MonoBehaviour
     private float   gravityScale    = 10.0f;                    //重力の値(整数)
     private Vector3 gravityDir;                                 //重力の向き
     private float   cameraDis       = -10.0f;                   //カメラの距離
-    private float   rot             = 0.5f;                     //回転量
+    private float   rot             = 60.0f;                   //1秒間の回転量
 
     private void Start()
     {
@@ -35,13 +35,11 @@ public class PlayerController_LABYRINTH : MonoBehaviour
         //カメラ回転とプレイヤーの回転
         if (Input.GetKey(KeyCode.A))
         {
-            cam.transform.rotation *= Quaternion.Euler(0, 0, rot);
-            transform.rotation *= Quaternion.Euler(0, 0, rot + 1);
+            cam.transform.rotation *= Quaternion.Euler(0, 0, rot*Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            cam.transform.rotation *= Quaternion.Euler(0, 0, -rot);
-            transform.rotation *= Quaternion.Euler(0, 0, -(rot + 1));
+            cam.transform.rotation *= Quaternion.Euler(0, 0, -rot*Time.deltaTime);
         }
     }
 }
