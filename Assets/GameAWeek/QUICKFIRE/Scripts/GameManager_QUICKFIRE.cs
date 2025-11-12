@@ -5,6 +5,13 @@ using UnityEngine;
 public class GameManager_QUICKFIRE : MonoBehaviour
 {
     private TextMeshProUGUI questionText;   //
+    private TextMeshProUGUI scoreText;
+    private GameObject parentObjT;
+    private GameObject parentObjH;
+    [SerializeField]
+    private GameObject[] timeObjs;
+    [SerializeField]
+    private GameObject[] hpObjs;
 
     //出題範囲のキーとKeyCodeの対応表
     private Dictionary<string, KeyCode> keyValues = new Dictionary<string, KeyCode>()
@@ -19,19 +26,45 @@ public class GameManager_QUICKFIRE : MonoBehaviour
 
     private string  currentKey;             //現在選ばれているキー名
     private KeyCode currentCode;            //現在選ばれているKeyCode
-    private float   currentTime;            //経過時間
-    private float   waitTime = 3f;          //待機時間
+    [SerializeField]
+    private float   currentTimeA;           //経過時間(クイズ出題前)
+    private float   currentTimeB;           //制限時間(クイズ出題後)
+    private float   waitTime = 1.0f;        //待機時間
     private int     score;                  //スコア
-    private bool    isQuizActive;    //クイズがアクティブかどうか
+    private int     countT;
+    private int     countH;
+    private bool    isQuizActive;           //クイズがアクティブかどうか
+    private bool a = true;
 
     public static int finalScore;           //最終スコア
 
     private void Start()
     {
         questionText = GameObject.Find("Question").GetComponent<TextMeshProUGUI>();
+        scoreText = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
+        parentObjT = GameObject.Find("Time").gameObject;
+        parentObjH = GameObject.Find("HP").gameObject;
 
-        //最初から出題されるようにするため
-        currentTime = 3.0f;
+        //配列の個数を別に保存
+        countT = parentObjT.transform.childCount;
+        countH = parentObjH.transform.childCount;
+
+        //サイズ確保&初期化
+        timeObjs = new GameObject[countT];
+        hpObjs = new GameObject[countH];
+
+        //子オブジェト格納
+        for(int t = 0;  t < parentObjT.transform.childCount; t++)
+        {
+            timeObjs[t] = parentObjT.transform.GetChild(t).gameObject;
+        }
+        for(int h = 0; h < parentObjH.transform.childCount; h++)
+        {
+            hpObjs[h] = parentObjH.transform.GetChild(h).gameObject;
+        }
+
+        currentTimeA = 0.0f;
+        currentTimeB = 0.0f;
 
         //最初のキーを選ぶ
         ChooseRandomKey();
@@ -40,42 +73,84 @@ public class GameManager_QUICKFIRE : MonoBehaviour
 
     private void Update()
     {
-        currentTime += Time.deltaTime;
+        scoreText.text = score.ToString();
 
-        if (currentTime <= waitTime) 
-            return;
-        else 
-            isQuizActive = true;
+        currentTimeA += Time.deltaTime;
 
-        if (isQuizActive)
+        //3秒待つ
+        if (currentTimeA > waitTime) isQuizActive = true;
+        else return;
+
+        if (isQuizActive && a)
         {
             //次のキーを選ぶ
             ChooseRandomKey();
-            isQuizActive = false;
+            
+            a = false;
+        }
+        else if (isQuizActive)
+        {
+            //タイマー
+            InQuizTimer();
         }
 
-        if (Input.GetKeyDown(currentCode))
+        //キーが押されたとき
+        if (Input.anyKeyDown)
         {
-            //スコア加算
-            score++;
-            //初期化
-            currentTime = 0f;
-            Debug.Log($"正解！ スコア: {score}");
+            //正解が押されたとき
+            if (Input.GetKeyDown(currentCode))
+            {
+                //スコア加算
+                score++;
+
+                //初期化
+                currentTimeA = 0f;
+                currentTimeB = 0f;
+                for (int t = 0; t < timeObjs.Length; t++)
+                {
+                    countT++;
+                    timeObjs[t].SetActive(true);
+                }
+                questionText.text = " ";
+
+                a = true;
+                Debug.Log($"正解！ スコア: {score}");
+            }
+            //不正解のとき
+            else
+            {
+                //スコア減算
+                score--;
+
+                //HP減少
+                countH--;
+                hpObjs[countH].SetActive(false);
+
+                //初期化
+                currentTimeA = 0f;
+                currentTimeB = 0f;
+                for (int t = 0; t < timeObjs.Length; t++)
+                {
+                    countT++;
+                    timeObjs[t].SetActive(true);
+                }
+                questionText.text = " ";
+                a = true;
+                Debug.Log($"不正解！ スコア: {score}");
+            }
         }
-        else
+
+        //リザルトへ(HP)
+        if(countH <= 0 || countT <= 0)
         {
-            //スコア減算
-            score--;
-            //初期化
-            currentTime = 0f;
-            Debug.Log($"不正解！ スコア: {score}");
+            Debug.Log("----- ゲームオーバー -----");
         }
     }
 
     /// <summary>
     /// 問題のキーをランダムに選ぶ
     /// </summary>
-    void ChooseRandomKey()
+    private void ChooseRandomKey()
     {
         //keyValuesからランダムに1つ選ぶ
         List<string> keys = new List<string>(keyValues.Keys);
@@ -86,5 +161,18 @@ public class GameManager_QUICKFIRE : MonoBehaviour
 
         questionText.text = currentKey;
         Debug.Log($"次に押すキーは：{currentKey}");
+    }
+
+    private void InQuizTimer()
+    {
+        currentTimeB += Time.deltaTime;
+
+        //1秒経過ごとの処理
+        if(currentTimeB >= 1.0f && countT != 0)
+        {
+            currentTimeB = 0.0f;
+            countT--;
+            timeObjs[countT].SetActive(false);
+        }
     }
 }
