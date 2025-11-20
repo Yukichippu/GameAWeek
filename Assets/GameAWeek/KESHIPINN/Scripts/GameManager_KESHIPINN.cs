@@ -14,25 +14,30 @@ public class GameManager_KESHIPINN : MonoBehaviour
     private Turn turn;
 
     [SerializeField, Header("Objects")]
-    private GameObject[] players;
+    private GameObject[]    players;            //
     [SerializeField]
-    private GameObject[] arrow;
+    private GameObject[]    arrow;              //
     [SerializeField]
-    private float height;
+    private float           height;             //
     [SerializeField]
-    private float width;
-    private Image gauge;
+    private float           width;              //
+    private Image           gauge;              //
+    private Rigidbody2D     rb;                 //
+    private Canvas          ruleCanvas;         //
 
-    private float addSpeed = 100.0f;
-    private bool setPower;
-    private bool isStop;
+    private float           addSpeed = 8.0f;    //
+    private bool            setPower;           //
+    private bool            isStop;             //
+
 
     private void Start()
     {
         arrow[0] = players[0].transform.GetChild(0).gameObject;
         arrow[1] = players[1].transform.GetChild(0).gameObject;
+        ruleCanvas = GameObject.Find("RuleCanvas").GetComponent<Canvas>();
         gauge = GameObject.Find("Gauge").GetComponent<Image>();
 
+        ruleCanvas.enabled = false;
         turn = Turn.PLAYER_A;
         setPower = true;
         isStop = false;
@@ -47,6 +52,21 @@ public class GameManager_KESHIPINN : MonoBehaviour
         }
         else
         {
+            //ルール表示
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                if(ruleCanvas.enabled)
+                {
+                    Time.timeScale = 1f;
+                    ruleCanvas.enabled = false;
+                }
+                else
+                {
+                    Time.timeScale = 0f;
+                    ruleCanvas.enabled = true;
+                }
+            }
+
             //範囲外に出たらDestroy()
             if (players[0].transform.position.x > width || players[0].transform.position.x < -width ||
                 players[0].transform.position.y > height || players[0].transform.position.y < -height)
@@ -100,31 +120,26 @@ public class GameManager_KESHIPINN : MonoBehaviour
     /// <param name="arrowObj">方向を指定するオブジェクト</param>
     private void Flip(GameObject playerObj, GameObject arrowObj)
     {
+        rb = playerObj.GetComponent<Rigidbody2D>();
+
         //指定オブジェクトのrotation.zをラジアンに変換
-        float angleRad = (arrowObj.transform.eulerAngles.z - 90) * Mathf.Deg2Rad;
+        float angleRad = (arrowObj.transform.eulerAngles.z - 90f) * Mathf.Deg2Rad;
 
         //その方向に向かう正規化ベクトル
-        Vector3 dir = new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad), 0f);
+        Vector2 dir = new Vector2(Mathf.Cos(angleRad), Mathf.Sin(angleRad)).normalized;
 
         //ゲージ(0〜1)に応じて速度が変化
         float speed = addSpeed * gauge.fillAmount;
 
         if (Input.GetMouseButtonDown(0))
         {
-            //はじかれるように移動
-            playerObj.transform.position += dir * speed * Time.deltaTime;
+            //弾かれるように移動
+            rb.linearVelocity = dir * speed;
 
-            //動かすオブジェクトを変更するタイミング
-            if(turn == Turn.PLAYER_A)
-            {
-                turn = Turn.PLAYER_B;
-            }
-            else
-            {
-                turn = Turn.PLAYER_A;
-            }
+            //ターン切り替え
+            turn = (turn == Turn.PLAYER_A) ? Turn.PLAYER_B : Turn.PLAYER_A;
 
-            //ゲージのフラグ初期化
+            //SetPower()のためのフラグを初期化
             isStop = false;
             setPower = true;
         }
