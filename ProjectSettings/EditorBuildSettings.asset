@@ -18,14 +18,14 @@ EditorBuildSettings:
     path: Assets/GameAWeek/ImportFiles/SephirothSceneSwitchingEffects/CircleWipe/UseScene/SephirothWipeSceneSwitchingScene.unity
     guid: 24c0fb5c44772f843a15e0866ebcd8fe
   - enabled: 1
-    path: Assets/GameAWeek/KESHIPINN/Scenes/Title.unity
-    guid: ccb9c2e729b5157488149104d2372ed4
+    path: Assets/GameAWeek/MUDA/Scenes/Title.unity
+    guid: 4ed8ff34dda46594798c25a4972e6e40
   - enabled: 1
-    path: Assets/GameAWeek/KESHIPINN/Scenes/Game.unity
-    guid: e6de548e04c0b7b4993cdc3feb872c16
+    path: Assets/GameAWeek/MUDA/Scenes/Game.unity
+    guid: 7a8caf01b27c5824f8bb1331a57c3d34
   - enabled: 1
-    path: Assets/GameAWeek/KESHIPINN/Scenes/Result.unity
-    guid: 9f999065c58d1884a9942a2ae0c0d56c
+    path: Assets/GameAWeek/MUDA/Scenes/Result.unity
+    guid: 036f97e2eea13484cb5e38e098988eba
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
