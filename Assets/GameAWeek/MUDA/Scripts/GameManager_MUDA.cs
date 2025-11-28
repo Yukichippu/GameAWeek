@@ -4,18 +4,16 @@ using UnityEngine.UI;
 
 public class GameManager_MUDA : MonoBehaviour
 {
-    public GameObject[] prefabObj;          //
-    public Image gauge;                     //
-    public static float speed = 1.0f;       //
-    public static int level = 0;            //
+    public GameObject[] prefabObj;          //連打中に出す文字のプレハブ
+    public Image gauge;                     //ゲージ
+    public static float speed = 1.0f;       //ゲージの減少スピード
+    public static int level = 0;            //難易度
 
     [SerializeField]
-    Vector2 maxPos;                         //
+    Vector2 maxPos;                         //画面右上の座標
     [SerializeField]
-    float addPoint = 0.1f;                  //
-    float max = 0.99f;                      //
-    float min = 0.0f;                       //
-    bool onGameOver;                        //  
+    float addPoint = 0.1f;                  //1回ボタンを押して増加するゲージの量
+    bool onGameOver;                        //  ゲームオーバーを許可するかどうか
 
     void Start()
     {
