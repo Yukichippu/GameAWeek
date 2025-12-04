@@ -1,38 +1,48 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMover : MonoBehaviour
 {
+    //構造体定義
     private struct Ladders
     {
-        public GameObject ladderObj;
-        public Vector2 dis;
+        public GameObject ladderObj;    //梯子オブジェクト
+        public Vector2 dis;             //距離
     }
     [SerializeField]
-    Ladders[] ladder;
+    Ladders[] ladder;                   //梯子オブジェクト配列
 
     string baseName = "Ladder";
+    Rigidbody2D rb;
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+
         //オブジェクトを配列に格納
         List<Ladders> laddersList = new List<Ladders>();
         int index = 0;
         while(true)
         {
+            //オブジェクト名を生成して取得
             string objName = baseName + index;
             GameObject obj = GameObject.Find(objName);
 
+            //オブジェクトが存在しなければ終了
             if (obj == null)
                 break;
 
+            //構造体に格納してリストに追加
             Ladders lad = new Ladders();
             lad.ladderObj = obj;
             lad.dis = Vector2.zero;
 
+            //リストに追加
             laddersList.Add(lad);
             index++;
         }
+        //リストを配列に変換して格納
         ladder = laddersList.ToArray();
     }
 
@@ -45,17 +55,37 @@ public class PlayerMover : MonoBehaviour
         //距離取得
         for (int i = 0; i < ladder.Length; i++)
         {
+            //オブジェクトが存在しなければスキップ
             if (ladder[i].ladderObj == null) continue;
 
+            //距離計算
             Ladders temp = ladder[i];
             temp.dis = transform.position - ladder[i].ladderObj.transform.position;
             ladder[i] = temp;
 
-            if (ladder[i].dis.x < 0.1f && ladder[i].dis.y < 0.5f)
+            //梯子に近ければ上下移動可能
+            if (ladder[i].dis.x < 0.05f && ladder[i].dis.y < 0.3f)
             {
                 float y = Input.GetAxis("Vertical") * Time.deltaTime;
+
+                //重力無効化
+                rb.gravityScale = 0; 
                 transform.position += new Vector3(0, y, 0);
             }
+            else
+            {
+                //重力有効化
+                rb.gravityScale = 1; 
+            }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D coll)
+    {
+        if(coll.gameObject.tag == "Bomb")
+        {
+            //ゲームオーバー
+            SceneManager.LoadScene("Result");
         }
     }
 }
