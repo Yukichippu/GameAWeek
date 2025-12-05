@@ -13,8 +13,9 @@ public class PlayerMover : MonoBehaviour
     [SerializeField]
     Ladders[] ladder;                   //梯子オブジェクト配列
 
-    string baseName = "Ladder";
     Rigidbody2D rb;
+    string baseName = "Ladder";
+    bool onLadder = false;
 
     private void Start()
     {
@@ -52,6 +53,24 @@ public class PlayerMover : MonoBehaviour
         float x = Input.GetAxis("Horizontal") * Time.deltaTime;
         transform.position += new Vector3(x, 0, 0);
 
+        if (onLadder)
+        {
+            rb.gravityScale = 0;
+            float y = Input.GetAxis("Vertical") * Time.deltaTime;
+            transform.Translate(0, y, 0);
+        }
+        else
+        {
+            rb.gravityScale = 1;
+        }
+    }
+
+    private void PreVerMove()
+    {
+        //移動
+        float x = Input.GetAxis("Horizontal") * Time.deltaTime;
+        transform.position += new Vector3(x, 0, 0);
+
         //距離取得
         for (int i = 0; i < ladder.Length; i++)
         {
@@ -64,28 +83,57 @@ public class PlayerMover : MonoBehaviour
             ladder[i] = temp;
 
             //梯子に近ければ上下移動可能
-            if (ladder[i].dis.x < 0.05f && ladder[i].dis.y < 0.3f)
+            if (Mathf.Abs(ladder[i].dis.x) < 0.5f && Mathf.Abs(ladder[i].dis.y) < 2f)
             {
                 float y = Input.GetAxis("Vertical") * Time.deltaTime;
 
                 //重力無効化
-                rb.gravityScale = 0; 
+                rb.gravityScale = 0;
                 transform.position += new Vector3(0, y, 0);
             }
             else
             {
                 //重力有効化
-                rb.gravityScale = 1; 
+                rb.gravityScale = 1;
             }
         }
     }
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
-        if(coll.gameObject.tag == "Bomb")
+        //爆弾に衝突したらゲームオーバー
+        if (coll.gameObject.tag == "Bomb")
         {
             //ゲームオーバー
             SceneManager.LoadScene("Result");
         }
     }
+
+    // ---トリガー判定---
+    private void OnTriggerEnter2D(Collider2D coll)
+    {
+        float playerY = transform.position.y;
+        float objectY = coll.transform.position.y;
+
+        //Groundレイヤーに衝突した場合
+        if (coll.gameObject.layer == 3)
+        {
+            //プレイヤーがオブジェクトの下から入った場合
+            if (playerY < objectY)
+            {
+                Physics2D.IgnoreCollision(coll, GetComponent<Collider2D>());
+            }
+        }
+
+        //Fieldレイヤーに衝突した場合
+        if (coll.gameObject.layer == 8)
+            onLadder = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D coll)
+    {
+        if (coll.gameObject.layer == 8)
+            onLadder = false;
+    }
+
 }
