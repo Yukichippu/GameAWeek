@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 71027546}
   - component: {fileID: 71027545}
   - component: {fileID: 71027547}
+  - component: {fileID: 71027548}
   m_Layer: 0
   m_Name: BOTTOM
   m_TagString: Untagged
@@ -315,6 +316,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &71027548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71027544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b94f45d132b5ce440b5e919c9c6becee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &291451504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2521,11 +2534,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1434896648}
-  gamaoverText: {fileID: 454851477}
+  gamaoverText: {fileID: 454851475}
   hearts:
-  - {fileID: 458921476}
-  - {fileID: 359705375}
-  - {fileID: 2027650287}
+  - {fileID: 458921474}
+  - {fileID: 359705373}
+  - {fileID: 2027650285}
 --- !u!4 &2097446214
 Transform:
   m_ObjectHideFlags: 0
@@ -2671,6 +2684,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 976309461220233170, guid: e90f22dc2bb82434a98acf9efe84138d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4454225760150904657, guid: e90f22dc2bb82434a98acf9efe84138d, type: 3}
       propertyPath: m_Constraints
       value: 4
@@ -2738,9 +2755,9 @@ SceneRoots:
   m_Roots:
   - {fileID: 750959010}
   - {fileID: 2097446214}
+  - {fileID: 766213926}
+  - {fileID: 1036773302}
   - {fileID: 649369737}
   - {fileID: 554310052}
   - {fileID: 2830122932285213418}
   - {fileID: 8192910952705246487}
-  - {fileID: 766213926}
-  - {fileID: 1036773302}

@@ -8,12 +8,13 @@ public class Manager_BLOCK : MonoBehaviour
     public static int hp;
 
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI gamaoverText;
-    public Image[] hearts;
+    public GameObject gamaoverText;
+    public GameObject[] hearts;
 
     void Start()
     {
-        gamaoverText.enabled = false;
+        gamaoverText.SetActive(false);
+        hp = 3;
     }
 
     void Update()
@@ -23,19 +24,25 @@ public class Manager_BLOCK : MonoBehaviour
         switch (hp)
         {
             case 0:
-                gamaoverText.enabled = true;
+                hearts[0].SetActive(false);
+                hearts[1].SetActive(false);
+                hearts[2].SetActive(false);
+                gamaoverText.SetActive(true);
                 break;
             case 1:
-                hearts[0].enabled = true;
+                hearts[0].SetActive(true);
+                hearts[1].SetActive(false);
+                hearts[2].SetActive(false);
                 break;
             case 2:
-                hearts[0].enabled = true;
-                hearts[1].enabled = true;
+                hearts[0].SetActive(true);
+                hearts[1].SetActive(true);
+                hearts[2].SetActive(false);
                 break;
             case 3:
-                hearts[0].enabled = true;
-                hearts[1].enabled = true;
-                hearts[2].enabled = true;
+                hearts[0].SetActive(true);
+                hearts[1].SetActive(true);
+                hearts[2].SetActive(true);
                 break;
         }
     }
